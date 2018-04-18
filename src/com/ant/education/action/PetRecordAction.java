@@ -1,19 +1,21 @@
 package com.ant.education.action;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
-import net.sf.json.JSONObject;
-
 import com.ant.education.base.BaseActionSupport;
 import com.ant.education.entity.PetRecord;
 import com.ant.education.service.IPetRecordService;
 import com.ant.education.util.ErrorConstants;
 import com.ant.education.util.JsonResult;
+import com.ant.education.util.UploadFileUtils;
 import com.ant.education.util.WriterUtil;
+
+import net.sf.json.JSONObject;
 
 @SuppressWarnings("serial")
 public class PetRecordAction extends BaseActionSupport {
@@ -22,6 +24,25 @@ public class PetRecordAction extends BaseActionSupport {
 	private IPetRecordService petRecordService;
 	private PetRecord petRecord;
 	List<PetRecord> petRecordList;
+
+	private File petFile; // 上传的文件
+	private String petFileFileName; // 保存原始文件名
+	
+	public File getPetFile() {
+		return petFile;
+	}
+
+	public void setPetFile(File petFile) {
+		this.petFile = petFile;
+	}
+
+	public String getPetFileFileName() {
+		return petFileFileName;
+	}
+
+	public void setPetFileFileName(String petFileFileName) {
+		this.petFileFileName = petFileFileName;
+	}
 
 	public IPetRecordService getPetRecordService() {
 		return this.petRecordService;
@@ -143,7 +164,24 @@ public class PetRecordAction extends BaseActionSupport {
 		} finally {
 			WriterUtil.writeStr(JSONObject.fromObject(jsonMap).toString());
 		}
-
 	}
-
+	
+	public void sendPetRecord(){
+		
+        String suffix = petFileFileName.substring(petFileFileName.lastIndexOf(".") + 1);
+        System.out.println("后缀名---"+suffix +"---");
+		
+		String addFilePath = System.currentTimeMillis() + "." + suffix;
+		
+		if (petFile != null) {
+			try {
+				UploadFileUtils.upload4Stream(addFilePath, "c:\\word_upload", petFile);
+				System.out.println("upload jpg success --->");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		WriterUtil.writeStr("success");
+	}
+	
 }

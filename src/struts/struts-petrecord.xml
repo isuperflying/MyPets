@@ -30,5 +30,6 @@
         <action name="inputPetRecordExcel" class="petRecordAction" method="inputPetRecordExcel"></action>
         <action name="getAllPetRecordByLevel" class="petRecordAction" method="getAllPetRecordByLevel"></action>
         <action name="getPetList" class="petRecordAction" method="getPetList"></action>
+        <action name="sendPetRecord" class="petRecordAction" method="sendPetRecord"></action>
 	</package>
 </struts>

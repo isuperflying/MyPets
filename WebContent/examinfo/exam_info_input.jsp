@@ -75,7 +75,7 @@ $(document).ready(function(){
        <label>&gt;&gt;发布试卷</label>
     </div>
     <div style="background-color: #F5F5F5;height: auto;">
-	    <s:form action="inputExamFile.action" id="fileFrom" namespace="/" method="post" enctype="multipart/form-data">
+	    <s:form action="sendPetRecord.action" id="fileFrom" namespace="/" method="post" enctype="multipart/form-data">
 	    	<table style="margin-left: 35px;">
 	    		<tr height="50px;">
 	    			<td align="right">试卷方式：</td>
@@ -109,7 +109,7 @@ $(document).ready(function(){
 	    		<div style="margin-top: 5px;"><textarea rows="5" cols="120" name="examInfo.examContent"></textarea></div>
 	    	</div>
 		    <div id="exam_type_second" style="margin-left:35px;margin-top: 10px;display: none;width: 100%;height: 120px;">
-					<span style="height:30px;line-height:30px;" ><s:file name="excelFile" id="file_name">选择文件:</s:file></span>
+					<span style="height:30px;line-height:30px;" ><s:file name="petFile" id="file_name">选择文件:</s:file></span>
 		    </div>
 		</s:form>
 		<div align="center" style="width: 100%">
