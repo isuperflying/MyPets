@@ -13,7 +13,8 @@ public class PetRecord {
 
 	private String title;
 	
-
+	private String petContent;
+	
 	private String imageUrl;
 	
 	private String bigImgUrl;
@@ -41,6 +42,15 @@ public class PetRecord {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	@Column(name = "pet_content")
+	public String getPetContent() {
+		return petContent;
+	}
+
+	public void setPetContent(String petContent) {
+		this.petContent = petContent;
 	}
 
 	@Column(name = "image_url", length = 200)

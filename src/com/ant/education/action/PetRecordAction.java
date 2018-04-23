@@ -27,7 +27,7 @@ public class PetRecordAction extends BaseActionSupport {
 
 	private File petFile; // 上传的文件
 	private String petFileFileName; // 保存原始文件名
-	
+
 	public File getPetFile() {
 		return petFile;
 	}
@@ -166,36 +166,40 @@ public class PetRecordAction extends BaseActionSupport {
 			WriterUtil.writeStr(JSONObject.fromObject(jsonMap).toString());
 		}
 	}
-	
-	public void sendPetRecord(){
+
+	public void sendPetRecord() {
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
-        String suffix = petFileFileName.substring(petFileFileName.lastIndexOf(".") + 1);
-        System.out.println("后缀名---"+suffix +"---");
-		
+		String suffix = petFileFileName.substring(petFileFileName.lastIndexOf(".") + 1);
+		System.out.println("后缀名---" + suffix + "---");
+
 		String addFilePath = System.currentTimeMillis() + "." + suffix;
-		
+
 		if (petFile != null) {
 			try {
 				UploadFileUtils.upload4Stream(addFilePath, "c:\\word_upload", petFile);
 				System.out.println("upload jpg success --->");
-				
-				jsonMap.put("code", ErrorConstants.SUCCESS);
-				jsonMap.put("message", "成功");
-				jsonMap.put("data", "success");
+				petRecord.setImageUrl("https://www.antleague.com/images/" + addFilePath);
+				petRecord.setBigImgUrl("https://www.antleague.com/images/" + addFilePath);
+				boolean res = petRecordService.savePetRecord(petRecord);
+				if (res) {
+					jsonMap.put("code", ErrorConstants.SUCCESS);
+					jsonMap.put("message", "成功");
+					jsonMap.put("data", "success");
+				}
 			} catch (Exception e) {
 				jsonMap.put("code", ErrorConstants.DATA_ERR);
 				jsonMap.put("message", "数据处理异常");
 				jsonMap.put("data", "error");
 				e.printStackTrace();
-			}finally {
+			} finally {
 				WriterUtil.writeStr(JSONObject.fromObject(jsonMap).toString());
 			}
-		}else {
+		} else {
 			jsonMap.put("code", ErrorConstants.UPLOAD_FILE_ERR);
 			jsonMap.put("message", "文件上传异常");
 			jsonMap.put("data", "error");
 			WriterUtil.writeStr(JSONObject.fromObject(jsonMap).toString());
 		}
 	}
-	
+
 }

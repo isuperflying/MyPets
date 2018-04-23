@@ -22,7 +22,7 @@ public class PetRecordServiceImpl implements IPetRecordService {
 	}
 
 	public List<PetRecord> getDataList(int start, int limit) {
-		String hql = " SELECT P FROM PetRecord P ";
+		String hql = " SELECT P FROM PetRecord P order by id desc";
 		return this.petRecordDao.getDataList(hql, null, start, limit);
 	}
 
