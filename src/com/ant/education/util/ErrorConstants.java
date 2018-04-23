@@ -23,6 +23,8 @@ public class ErrorConstants {
 	public final static String REQUEST_DATA_SAFE_ERR = "10005";
 	/** 数据处理异常！ */
 	public final static String DATA_ERR = "10006";
+	/** 数据处理异常！ */
+	public final static String UPLOAD_FILE_ERR = "10007";
 	/** 业务逻辑处理错误 */
 	public final static String BUSINESS_HANDLE_ERR = "99999";
 
