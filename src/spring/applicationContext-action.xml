@@ -63,4 +63,8 @@
 		scope="prototype">
 		<property name="petRecordService" ref="petRecordService"></property>
 	</bean>
+	<bean id="idiomInfoAction" class="com.ant.education.action.IdiomInfoAction"
+		scope="prototype">
+		<property name="idiomInfoService" ref="idiomInfoService"></property>
+	</bean>
 </beans>

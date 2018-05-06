@@ -57,4 +57,7 @@
 	<bean id="petRecordDao" class="com.ant.education.dao.impl.PetRecordDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	<bean id="idiomInfoDao" class="com.ant.education.dao.impl.IDiomInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 </beans>

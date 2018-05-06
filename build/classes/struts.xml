@@ -27,4 +27,5 @@
 	<include file="struts/struts-userexam.xml"></include>
 	<include file="struts/struts-scoreitem.xml"></include>
 	<include file="struts/struts-petrecord.xml"></include>
+	<include file="struts/struts-idiom.xml"></include>
 </struts>

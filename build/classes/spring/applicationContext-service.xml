@@ -46,4 +46,7 @@
 	<bean id="petRecordService" class="com.ant.education.service.impl.PetRecordServiceImpl">
 		<property name="petRecordDao" ref="petRecordDao"></property>
 	</bean>
+	<bean id="idiomInfoService" class="com.ant.education.service.impl.IDiomInfoServiceImpl">
+		<property name="idiomInfoDao" ref="idiomInfoDao"></property>
+	</bean>
 </beans>
